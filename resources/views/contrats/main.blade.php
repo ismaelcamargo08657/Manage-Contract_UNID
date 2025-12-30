@@ -19,8 +19,6 @@
                             <label class="h5 text-secondary">Bienvenido(a):</label><br>
                             <span class="fw-bold fs-4 nombreTrabajador text-dark">
                                 {{ isset($nombreCompleto) ? strtoupper($nombreCompleto) : 'COLABORADOR' }}
-
-
                             </span>
                         </div>
 
@@ -121,6 +119,11 @@
                                             <i class="fa-solid fa-file-pdf me-2"></i>Generar Contrato digital PDF
                                         </button>
                                     </form>
+                                @elseif ($contrato->pdf_status == 0)
+                                    <div class="" role="">
+                                        <a href="{{ route('view.contrato') }}" target="_blank" class="btn btn-success"><i class="fa-solid fa-check me-2"></i>
+                                        Visualizar Contrato</a>
+                                    </div>
                                 @endif
 
 
@@ -162,8 +165,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         @else
                             <div class="alert alert-light border text-center rounded-3 mt-4 text-muted ">
@@ -171,17 +172,6 @@
                                 tu contrato.
                             </div>
                         @endif
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>

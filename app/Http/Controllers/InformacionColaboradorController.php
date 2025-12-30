@@ -86,6 +86,6 @@ class InformacionColaboradorController extends Controller
                 'updated_at' => now()
             ]);
 
-        return redirect()->back()->with('success', 'Datos guardados correctamente');
+        return redirect()->route('main');
     }
 }

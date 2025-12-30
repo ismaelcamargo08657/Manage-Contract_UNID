@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        #claveElector,#claveElector::placeholder, #estadoCivil {
+            color: #ffffff;
+            opacity: 1;
+            text-transform: uppercase;
+        }
+    </style>
     <div class="container py-2">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-11">
@@ -13,60 +20,58 @@
                         </h4>
                     </div>
                     <div class="card-body p-4 bg-light">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                        <form action="{{ route('contrato.guardar') }}" method="post" id="formDatosPersonales">
-
+                        <form action="{{ route('contrato.guardar') }}" method="post" id="formDatosPersonales" >
                             @csrf
-
-
                             <h5 class="my-3 pb-2 border-bottom border-secondary">
                                 <i class="fa-solid fa-user me-2 colorsecundario"></i>
                                 Información General
                             </h5>
 
                             <div class="row g-3 needs-validation" novalidate>
-
-
                                 <div class="col-md-4">
                                     <label class="form-label">Nombre(s)</label>
-                                    <input type="text" class="form-control" value="{{ $data->Nombre }}" readonly
-                                        name="Nombre">
+                                    <input type="text" class="form-control text-capitalize" value="{{ $data->Nombre }}"
+                                        readonly name="Nombre" @disabled(true)>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="form-label">Apellido Paterno</label>
-                                    <input type="text" class="form-control" value="{{ $data->Apellido_Paterno }}"
-                                        readonly name="Apellido_Paterno">
+                                    <input type="text" class="form-control text-capitalize" value="{{ $data->Apellido_Paterno }}"
+                                        readonly name="Apellido_Paterno" @disabled(true)>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="form-label">Apellido Materno</label>
-                                    <input type="text" class="form-control" value="{{ $data->Apellido_Materno }}"
-                                        readonly name="Apellido_Materno">
+                                    <input type="text" class="form-control text-capitalize" value="{{ $data->Apellido_Materno }}"
+                                        readonly name="Apellido_Materno" @disabled(true)>
                                 </div>
 
 
                                 <div class="col-md-4">
                                     <label for="fechaNacimiento" class="form-label required">Fecha de Nacimiento</label>
                                     <input type="date" class="form-control fechaNacimiento" id="fechaNacimiento"
-                                        name="fechaNacimiento" required value="{{ $data->FechaNacimiento }}">
-                                    <div class="invalid-feedback">
-                                        Este campo es obligatorio.
-                                    </div>
+                                        name="fechaNacimiento" required value="{{ $data->FechaNacimiento }}" readonly disabled @disabled(true)>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="edad" class="form-label required">Edad</label>
                                     <input type="text" class="form-control" value="{{ $data->Edad }}" readonly
-                                        name="Edad">
-                                    <div class="invalid-feedback">
-                                        Este campo es obligatorio.
-                                    </div>
+                                        name="Edad" @disabled(true)>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="estadoCivil" class="form-label">Estado Civil</label>
-                                    <select name="estadoCivil" id="estadoCivil" class="form-select bg-primary">
+                                    <select name="estadoCivil" id="estadoCivil" class="form-select bg-primary" required>
                                         <option value="" selected>Selecciona una opcion</option>
                                         <option value="Casado(a)">Casado(a)</option>
                                         <option value="Soltero(a)">Soltero(a)</option>
@@ -74,20 +79,12 @@
                                         <option value="Viudo(a)">Viudo(a)</option>
                                         <option value="Concubinato">Concubinato</option>
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Este campo es obligatorio.
-                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="genero" class="form-label">Género</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $data->Sexo == 'H' ? 'Hombre' : 'Mujer' }}" readonly name="Sexo">
-                                    <div class="invalid-feedback">
-                                        Este campo es obligatorio.
-                                    </div>
+                                        value="{{ $data->Sexo == 'H' ? 'Hombre' : 'Mujer' }}" readonly name="Sexo" @disabled(true)>
                                 </div>
-
-
 
                                 <div class="col-md-4">
                                     <div class="d-flex align-items-center">
@@ -100,9 +97,8 @@
                                         </button>
                                     </div>
                                     <input type="text" class="form-control" value="{{ $data->CURP }}" readonly
-                                        name="CURP">
+                                        name="CURP" @disabled(true)>
                                 </div>
-
 
                                 <div class="col-md-4">
                                     <div class="d-flex align-items-center">
@@ -115,13 +111,14 @@
                                         </button>
                                     </div>
                                     <input type="text" class="form-control" value="{{ $data->RFC }}" readonly
-                                        name="RFC">
+                                        name="RFC" @disabled(true)>
                                 </div>
 
 
                                 <div class="col-md-4">
                                     <div class="d-flex align-items-center">
-                                        <label for="claveElector" class="form-label required mb-0">Clave del Elector</label>
+                                        <label for="claveElector" class="form-label required mb-0">Clave del
+                                            Elector</label>
                                         <button type="button"
                                             class="btn btn-primary rounded-circle mx-2 mb-2 p-0 d-flex align-items-center justify-content-center"
                                             style="width: 20px; height: 20px;" data-bs-toggle="modal"
@@ -129,8 +126,8 @@
                                             ?
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control bg-primary" id="claveElector" required
-                                        placeholder="Escribe aqui..." maxlength="18" name="claveElector"
+                                    <input type="text" class="form-control bg-primary text-light" id="claveElector"
+                                        required placeholder="Escribe aqui..." maxlength="18" name="claveElector"
                                         value="{{ old('claveElector') }}">
                                     <div class="invalid-feedback">
                                         Ingrese su Clave de Elector (18 caracteres).
@@ -141,7 +138,7 @@
                                 <div class="col-md-4">
                                     <label for="telefono" class="form-label required">Teléfono</label>
                                     <input type="text" class="form-control" value="{{ $data->Telefono }}" readonly
-                                        name="Telefono">
+                                        name="Telefono" @disabled(true)>
 
                                     <div class="invalid-feedback">
                                         Ingrese un número de teléfono válido (10 dígitos).
@@ -151,7 +148,7 @@
                                 <div class="col-md-4">
                                     <label for="email" class="form-label">Correo Electronico</label>
                                     <input type="email" class="form-control" value="{{ $data->Email }}" readonly
-                                        name="Email">
+                                        name="Email" @disabled(true)>
 
                                     <div class="invalid-feedback">
                                         Ingresa un correo electronico
@@ -160,8 +157,8 @@
 
                                 <div class="col-md-12">
                                     <label for="direccion" class="form-label required">Domicilio Actual</label>
-                                    <input type="Direccion" class="form-control" value="{{ $data->Direccion }}" readonly
-                                        name="Direccion">
+                                    <input type="Direccion" class="form-control text-capitalize" value="{{ $data->Direccion }}" readonly
+                                        name="Direccion" @disabled(true)>
 
                                     {{ old('direccion') }}
                                     <div class="invalid-feedback">
@@ -221,19 +218,19 @@
                                         <div class="col-md-3">
                                             <label class="form-label">Nombre de Cedis</label>
                                             <input type="text" class="form-control" value="{{ $data->Nombre_Cedis }}"
-                                                readonly name="Nombre_Cedis">
+                                                readonly name="Nombre_Cedis" @disabled(true)>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="form-label">Ubicación</label>
                                             <input type="text" class="form-control"
-                                                value="{{ $data->Direccion_Cedis }}" readonly name="Direccion_Cedis">
+                                                value="{{ $data->Direccion_Cedis }}" readonly name="Direccion_Cedis" @disabled(true)>
                                         </div>
 
                                         <div class="col-md-3">
                                             <label class="form-label">Responsable</label>
                                             <input type="text" class="form-control"
-                                                value="{{ $data->Responsable_Cedis }}" readonly name="Responsable_Cedis">
+                                                value="{{ $data->Responsable_Cedis }}" readonly name="Responsable_Cedis" @disabled(true)>
                                         </div>
                                     </div>
 
@@ -246,19 +243,20 @@
 
 
 
-                                    <div class="col-12 mt-4 d-flex justify-content-between">
-                                        <button type="button" class="btn btn-primary text-white fw-bold shadow"
+                                    <div class="col-12 mt-4 d-flex justify-content-end">
+                                        {{-- <button type="button" class="btn btn-primary text-white fw-bold shadow"
                                             id="btnBorrarCookies">
                                             <i class="fa-solid fa-cookie-bite me-2"></i> Borrar Cookies
-                                        </button>
-                                        <button type="button" class="btn colorprincipal text-dark fw-bold shadow"
-                                            data-bs-toggle="modal" data-bs-target="#modalId" id="btnContinuar">
-                                            <i class="fa-solid fa-arrow-right me-2 text-dark"></i> Continuar
+                                        </button> --}}
+                                        <button type="submit"
+                                            class="btn colorprincipal btn-primary text-light fw-bold shadow"
+                                            data-bs-toggle="modal" data-bs-target="#modalId" id="">
+                                            <i class="fa-solid fa-arrow-right me-2"></i> Continuar
                                         </button>
                                     </div>
-
+                                </div>
+                            </div>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -267,7 +265,7 @@
 
 
 
-    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
             <div class="modal-content">
@@ -292,13 +290,13 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="fa-solid fa-times me-1"></i> No
                     </button>
-                    <button type="submit" form="formDatosPersonales" class="btn btn-primary" >
+                    <button type="submit" form="formDatosPersonales" class="btn btn-primary">
                         <i class="fa-solid fa-check me-1"></i> Continuar
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="modal fade" id="exampleModalCurp" tabindex="-1" aria-labelledby="exampleModalLabel"
