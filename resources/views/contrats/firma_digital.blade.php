@@ -34,9 +34,9 @@
                             <li>3 - Asegúrate de que la imagen sea legible antes de continuar.</li>
                         </ul>
 
-
-                        <img src="/img/ine2.png" alt="Anverso del INE" class="img-fluid rounded shadow-sm"
+                        <img src="{{ asset('img/ine2.png') }}" alt="Anverso del INE" class="img-fluid rounded shadow-sm"
                             style="max-width: 225px; display: block; margin: 0 auto;">
+
                     </div>
                 </div>
 
@@ -57,8 +57,11 @@
                         </ul>
 
 
-                        <img src="/img/ine1.png" alt="Reverso del INE" class="img-fluid rounded shadow-sm"
-                            style="max-width: 225px; display: block; margin: 0 auto;">
+                        <img src="{{ asset('img/ine1.png') }}" 
+     alt="Reverso del INE" 
+     class="img-fluid rounded shadow-sm"
+     style="max-width: 225px; display: block; margin: 0 auto;">
+
                     </div>
                 </div>
 
@@ -77,8 +80,11 @@
                         </ul>
 
 
-                        <img src="/img/firmaimagen.png" alt="Ejemplo de firma digital" class="img-fluid rounded shadow-sm"
-                            style="max-width: 225px; display: block; margin: 0 auto;">
+                       <img src="{{ asset('img/firmaimagen.png') }}" 
+     alt="Ejemplo de firma digital" 
+     class="img-fluid rounded shadow-sm"
+     style="max-width: 225px; display: block; margin: 0 auto;">
+
                     </div>
                 </div>
 
@@ -98,8 +104,11 @@
                         </ul>
 
 
-                        <img src="/img/firma4.png" alt="Instrucción para finalizar" class="img-fluid rounded shadow-sm mt-3"
-                            style="max-width: 225px; display: block; margin: 0 auto;">
+                   <img src="{{ asset('img/firma4.png') }}" 
+     alt="Instrucción para finalizar" 
+     class="img-fluid rounded shadow-sm mt-3"
+     style="max-width: 225px; display: block; margin: 0 auto;">
+
                     </div>
                 </div>
 
@@ -125,15 +134,13 @@
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Foto del anverso</label>
-                        <input type="file" class="form-control" name="ine_anverso" id="ine_anverso" accept="image/*"
-                            required>
+                        <input type="file" class="form-control" name="ine_anverso" id="ine_anverso" accept="image/*" required>
                         <img id="preview_anverso" class="img-fluid mt-2 d-none border rounded" style="max-width:250px;">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Foto del reverso</label>
-                        <input type="file" class="form-control" name="ine_reverso" id="ine_reverso" accept="image/*"
-                            required>
+                        <input type="file" class="form-control" name="ine_reverso" id="ine_reverso" accept="image/*" required>
                         <img id="preview_reverso" class="img-fluid mt-2 d-none border rounded" style="max-width:250px;">
                     </div>
 

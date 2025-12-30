@@ -1662,8 +1662,9 @@
 
 
                             <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
-                                <img src="{{ asset('img/anexos/firmaOF.png') }}" alt="Firma representante"
-                                    style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                               <img src="{{ public_path('img/anexos/firmaOF.png') }}" alt="Firma representante"
+     style="max-height: 100%; max-width: 100%; object-fit: contain;">
+
                             </div>
 
                             <hr class="w-50 mx-auto">
