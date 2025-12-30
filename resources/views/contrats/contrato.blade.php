@@ -20,7 +20,7 @@
                     DE SERVICIOS ESPECIALIZADOS, REPRESENTADA EN ESTE ACTO POR LA C.
                     <strong>JANETT FLORES ESPINOSA</strong>, EN SU CARÁCTER DE ADMINISTRADOR ÚNICO,
                     A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ <strong>“LA EMPRESA”</strong>, Y POR LA OTRA
-                    EL/LA C. <span class="border-bottom d-inline-block" style="width:300px;"></span>,
+                    EL/LA C. <span class="nombreTrabajador bg-info">{{ $nombreCompleto }}</span>,
                     QUIEN COMPARECE POR SU PROPIO DERECHO Y A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ
                     <strong>“EL/LA TRABAJADOR/A”</strong>, AL TENOR DE LAS SIGUIENTES DECLARACIONES Y CLÁUSULAS.
                 </p>
@@ -55,15 +55,29 @@
                         Que es una persona física en pleno ejercicio de sus derechos y legalmente capacitada
                         para celebrar este contrato, de nacionalidad mexicana, estado civil Soltero(a),
                         con edad de
-                        <span class="border-bottom d-inline-block" style="width:60px;"></span>
+                        <span class="border-bottom d-inline-block text-center" style="width:60px;">
+                            {{ $edad }}
+                        </span>
                         años, a la fecha de firma del presente contrato, género
-                        <span class="border-bottom d-inline-block" style="width:120px;"></span>,
+                        <span class="border-bottom d-inline-block text-center" style="width:60px;">
+                            {{ $Sexo }}
+                        </span>
                         con Clave Única de Registro de Población
-                        <span class="border-bottom d-inline-block" style="width:180px;"></span>,
+                        <span class="border-bottom d-inline-block" style="width:180px; margin-left:6px;">
+                            {{ $claveLector }}
+                        </span>,
+
                         con domicilio particular en
-                        <span class="border-bottom d-inline-block" style="width:250px;"></span>
-                        y con Registro Federal de Contribuyentes
-                        <span class="border-bottom d-inline-block" style="width:150px;"></span>.
+                        con domicilio particular en&nbsp;
+                        <span class="border-bottom d-inline-block" style="width:250px;">
+                            {{ $domicilio }}
+                        </span>
+
+                        y con Registro Federal de Contribuyentes&nbsp;
+                        <span class="border-bottom d-inline-block" style="width:150px;">
+                            {{ $rfc }}
+                        </span>.
+
                     </li>
 
                     <li class="mb-2">
@@ -103,10 +117,13 @@
                     </li>
 
                     <li class="mb-2">
-                        Así mismo, en este acto designa como beneficiario al C.
-                        <span class="border-bottom d-inline-block" style="width:300px;"></span>
+                        Así mismo, en este acto designa como beneficiario al C.&nbsp;
+                        <span class="border-bottom d-inline-block" style="width:300px;">
+                            {{ $beneficiario }}
+                        </span>
                         para dar cumplimiento a lo dispuesto por el artículo 501 de la Ley Federal del Trabajo.
                     </li>
+
                 </ol>
 
                 <h5 class="mt-4 fw-semibold">III. “LAS PARTES” declaran:</h5>
@@ -704,8 +721,12 @@
                 </p>
 
                 <p>
-                    El registro de correo electrónico de “EL/LA TRABAJADOR/A” será: ______________________________________.
+                    El registro de correo electrónico de “EL/LA TRABAJADOR/A” será:&nbsp;
+                    <span class="border-bottom d-inline-block" style="width:350px;">
+                        {{ $email }}
+                    </span>.
                 </p>
+
 
                 <p>
                     “EL/LA TRABAJADOR/A” tiene la obligación de registrar su asistencia mediante el sistema de la aplicación
@@ -765,7 +786,9 @@
 
                 <p>
                     Para efectos de notificación, se establece que el correo electrónico oficial de “EL/LA TRABAJADOR/A”
-                    será: ___________________________________.
+                    será: <span class="border-bottom d-inline-block" style="width:350px;">
+                        {{ $email }}
+                    </span>.
                 </p>
 
                 <p>
@@ -1621,12 +1644,75 @@
                     la protección de los derechos de ambas partes y la seguridad jurídica en la relación laboral.
                 </p>
 
-                <p>
-                    Leído que fue el presente contrato por las partes, e impuestas de su contenido y fuerza legal, lo firman
-                    al alcance, en Puebla, pue a, día _____ DE ____________ DEL 2025.
-                </p>
+              
+                    <p>
+                        Leído que fue el presente contrato por las partes, e impuestas de su contenido y fuerza legal, lo
+                        firman
+                        en cinco hojas útiles, en <b class="bg-info estadoCedis"></b>, MÉXICO, a día
+                        {{ now()->format('d') }} de {{ strtoupper(now()->locale('es')->translatedFormat('F')) }} de
+                        {{ now()->year }},
+                        quedando un tanto en poder de cada una de las mismas.
+                    </p>
+                </div>
 
-                <p>JANETT FLORES ESPINOSA</p>
-                <p>“SERVICIOS E INSUMOS PROSMAN S.A DE C.V.”</p>
-                <p>(nombre del trabajador)</p>
-            @endsection
+
+                <div class="container my-4">
+                    <div class="row justify-content-between">
+
+
+                        <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
+
+
+                            <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
+                                <img src="{{ asset('img/anexos/firmaOF.png') }}" alt="Firma representante"
+                                    style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                            </div>
+
+                            <hr class="w-50 mx-auto">
+
+                            <span class="fw-bold d-block">JANETT FLOREZ ESPINOSA</span>
+                            <span class="text-muted">Representante Legal</span>
+                        </div>
+
+
+                        <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
+
+
+                            <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
+                                <img src="{{ asset('storage/Datos_Colaborador/' . $idColaborador . '/historial/firmas_colaborador/firma_' . $idColaborador . '.png') }}"
+                                    alt="Firma trabajador" style="max-height: 100%; max-width: 150%; object-fit: contain;">
+                            </div>
+
+                            <hr class="w-50 mx-auto">
+
+                            <h5 class="fw-bold mb-1 text-uppercase text-dark">
+                                {{ $nombreCompleto }}
+                            </h5>
+                            <span class="text-muted">TRABAJADOR</span>
+                        </div>
+                        @if (session()->has('success') || $estatus_contratoDigital == 0)
+                            <div class="alert alert-primary text-center p-4 my-4">
+                                <strong>¡Proceso completado!</strong><br>
+
+                                @if (session()->has('success'))
+                                    {{ session('success') }}
+                                @else
+                                    Has aceptado correctamente tu contrato digital.
+                                @endif
+                            </div>
+                        @endif
+
+                        @if ($estatus_contratoDigital == 1)
+                            <div class="container m-4">
+                                <div class="d-flex justify-content-center align-items-center mb-3 me-3 mt-4">
+                                    <form action="{{ route('contrato.aceptar') }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-primary">
+                                            Acepto los términos y condiciones del Contrato Digital
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                @endsection

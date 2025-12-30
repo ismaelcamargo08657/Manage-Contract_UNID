@@ -20,7 +20,14 @@ class ContratoController extends Controller
                 col.Apellido_Paterno,
                 col.Apellido_Materno,
                  col.Email,
+                 col.Edad, 
+                 col.Sexo,
+                   col.Direccion,
+                   
+        col.Colonia,
                 comp.Puesto,
+                 comp.RFC,
+                 comp.Emergencia_Nombre,
                 comp.Fecha_Ingreso
             FROM nxgcommx_intranet_cya.colaborador col
             LEFT JOIN nxgcommx_intranet_cya.complementos comp
@@ -34,6 +41,10 @@ class ContratoController extends Controller
         }
 
         $nombreCompleto = $data->Nombre . ' ' . $data->Apellido_Paterno . ' ' . $data->Apellido_Materno;
+        $domicilio = trim(
+            ($data->Direccion ?? '') .
+                ($data->Colonia ? ', ' . $data->Colonia : '')
+        );
 
 
         $contrato = DB::table('contratos')
@@ -45,9 +56,15 @@ class ContratoController extends Controller
             'puesto' => $data->Puesto ?? "SIN PUESTO",
             'idColaborador' => $idColaborador,
             'estatus_contratoDigital' => $contrato->status_contratos ?? 1,
-
+            'edad' => $data->Edad,
             'fechaIngreso' => $data->Fecha_Ingreso,
+            'Sexo' => $data->Sexo,
+            'claveLector' => $contrato->clave_lector,
+            'domicilio' => $domicilio,
+            'rfc' => $data->RFC,
+             'beneficiario' => $data->Emergencia_Nombre,
             'email' => $data->Email
+
         ]);
     }
     public function aceptarContrato(Request $request)
