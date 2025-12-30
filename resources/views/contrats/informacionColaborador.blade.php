@@ -20,7 +20,6 @@
                     <div class="card-body p-4 bg-light">
 
                         <form action="{{ route('contrato.guardar') }}" method="post" id="formDatosPersonales">
-
                             @csrf
 
 
