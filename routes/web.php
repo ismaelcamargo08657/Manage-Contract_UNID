@@ -4,16 +4,13 @@ use App\Http\Controllers\CuestionarioMedicoDataController;
 use App\Http\Controllers\FlujoMainController;
 use App\Http\Controllers\InformacionColaboradorController;
 use App\Http\Controllers\SolicitudEmpleoDataController;
-use App\Http\Controllers\ValidacionIneController;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\SolicitudEmpleoController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\Paso2ContratacionController;
 use App\Http\Controllers\INEController;
 use App\Http\Controllers\AnexosController;
-use App\Http\Controllers\MainController;
 
 
 
@@ -35,14 +32,15 @@ Route::middleware(['auth'])->group(function () {
 
     //Información de main
 
-    Route::get('main', [Paso2ContratacionController::class, 'mostrarMain'])->name('main');
+    Route::get('/main', [Paso2ContratacionController::class, 'mostrarMain'])->name('main');
 
     Route::get('/getStatusColaborador', [FlujoMainController::class, 'getStatus']);
 
     // validacionIne
     Route::get('/firma_digital', [INEController::class, 'vistaIne'])->name('firma_digital');
 
-
+//Ver contrato y anexosF
+Route::get('/view/contrato',[ContratoController::class,'viewContrato'])->name('view.contrato');
 
     Route::get('/anexos', function () {
         return view('contrats.anexos');
