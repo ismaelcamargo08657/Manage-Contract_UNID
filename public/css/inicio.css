@@ -1,0 +1,15 @@
+body {
+    background-image: url("./img/fondoprosman4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+
+
+.powerby {
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8)) drop-shadow(-3px -3px 6px rgba(0, 0, 0, 0.8));
+}
+
