@@ -69,23 +69,26 @@ class InformacionColaboradorController extends Controller
         return "$year-$month-$day";
     }
 
-    public function guardarDatos(Request $request)
-    {
-        $request->validate([
-            'estadoCivil' => 'required|string|max:30',
-            'claveElector' => 'required|string|size:18',
+public function guardarDatos(Request $request)
+{
+    $request->validate([
+        'estadoCivil' => 'required|string|max:30',
+        'claveElector' => 'required|string|size:18',
+    ]);
+
+    $idUsuario = Auth::user()->idColaborador;
+
+    DB::table('contratos')
+        ->where('idColaborador', $idUsuario)
+        ->update([
+            'estado_civil' => $request->estadoCivil,
+            'clave_lector' => $request->claveElector,
+            'updated_at' => now()
         ]);
 
-        $idUsuario = Auth::user()->idColaborador;
+    return redirect()
+        ->route('contrats.main') // 👈 AQUÍ ESTÁ LA CLAVE
+        ->with('success', 'Datos guardados correctamente');
+}
 
-        DB::table('contratos')
-            ->where('idColaborador', $idUsuario)
-            ->update([
-                'estado_civil' => $request->estadoCivil,
-                'clave_lector' => $request->claveElector,
-                'updated_at' => now()
-            ]);
-
-        return redirect()->back()->with('success', 'Datos guardados correctamente');
-    }
 }
