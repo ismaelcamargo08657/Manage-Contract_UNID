@@ -87,7 +87,7 @@ public function guardarDatos(Request $request)
         ]);
 
     return redirect()
-        ->route('contrats.main') // 👈 AQUÍ ESTÁ LA CLAVE
+        ->route('contrats.main') 
         ->with('success', 'Datos guardados correctamente');
 }
 
