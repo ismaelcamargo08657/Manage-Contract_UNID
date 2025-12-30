@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Obtencion de informacion
     Route::get('/getInformation', [InformacionColaboradorController::class, 'index'])->name('informacionColaborador');
-    Route::post('/setInformation', [InformacionColaboradorController::class, 'store'])->name('saveInformation');
+
 
     //Información de main
 
@@ -92,9 +92,6 @@ Route::middleware(['auth'])->group(function () {
 
     //isma
 
-    Route::post('/setInformation', function () {
-        return redirect()->route('main');
-    })->name('saveInformation');
 
 
     Route::get('/contrats/main', [Paso2ContratacionController::class, 'mostrarMain'])
@@ -110,4 +107,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/aceptar-anexo', [AnexosController::class, 'aceptarAnexo'])
         ->name('aceptar.anexo');
+
+
+    Route::post(
+        '/guardar-datos-contrato',
+        [InformacionColaboradorController::class, 'guardarDatos']
+    )->name('contrato.guardar');
 });

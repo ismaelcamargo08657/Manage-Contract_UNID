@@ -1,24 +1,25 @@
-document.getElementById('btnColaboradorInfo').addEventListener('click', function(e) {
-    e.preventDefault(); // evita que el enlace actúe
+document.getElementById('btnColaboradorInfo').addEventListener('click', function (e) {
+    e.preventDefault(); // evitamos el submit normal
 
     const form = document.getElementById('formDatosPersonales');
     const formData = new FormData(form);
 
-    fetch("/setInformation", {
-        method: "POST",
+    fetch('/guardar-datos-contrato', {
+        method: 'POST',
         headers: {
-            "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value
+            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
         },
         body: formData
     })
     .then(response => {
-        if (response.redirected) {
-            // Laravel ya devolvió el redirect a /main, ¡lo seguimos!
-            window.location.href = '/main';
-        } else {
-            // Si no redirigió, revisamos la respuesta
-            response.text().then(console.log);
+        if (!response.ok) {
+            throw new Error('Error al guardar los datos');
         }
+       
+        window.location.href = '/main';
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al guardar la información. Intenta nuevamente.');
+    });
 });

@@ -19,7 +19,7 @@
                             <label class="h5 text-secondary">Bienvenido(a):</label><br>
                             <span class="fw-bold fs-4 nombreTrabajador text-dark">
                                 {{ isset($nombreCompleto) ? strtoupper($nombreCompleto) : 'COLABORADOR' }}
-                                                                                          
+
 
                             </span>
                         </div>
@@ -57,7 +57,7 @@
                             </div>
 
 
-                            
+
 
 
                             <div class="col-md-3">
@@ -110,7 +110,7 @@
                         @if (
                             $contrato->status_ine == 0 &&
                                 $contrato->status_firma == 0 &&
-                                $contrato->status_anexos == 0 &&
+                                //$contrato->status_anexos == 0 &&
                                 $contrato->status_contratos == 0)
                             <div class="d-flex flex-column align-items-center mt-4">
                                 <h5 class="fw-bold mb-3">Proceso de Contratación - Paso 3/3</h5>
