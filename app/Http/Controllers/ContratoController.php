@@ -43,7 +43,7 @@ class ContratoController extends Controller
         $nombreCompleto = $data->Nombre . ' ' . $data->Apellido_Paterno . ' ' . $data->Apellido_Materno;
         $domicilio = trim(
             ($data->Direccion ?? '') .
-                ($data->Colonia ? ', ' . $data->Colonia : '')
+            ($data->Colonia ? ', ' . $data->Colonia : '')
         );
 
 
@@ -62,7 +62,7 @@ class ContratoController extends Controller
             'claveLector' => $contrato->clave_lector,
             'domicilio' => $domicilio,
             'rfc' => $data->RFC,
-             'beneficiario' => $data->Emergencia_Nombre,
+            'beneficiario' => $data->Emergencia_Nombre,
             'email' => $data->Email
 
         ]);
@@ -77,6 +77,15 @@ class ContratoController extends Controller
                 'status_contratos' => 0
             ]);
 
-        return redirect()->back()->with('success', 'Contrato aceptado correctamente.');
+        return redirect()->route('main');
+    }
+
+    public function viewContrato()
+    {
+        try {
+            return response()->file(storage_path('app/public/Datos_Colaborador/' . Auth::user()->idColaborador . '/historial/contrato_actual/contrato_' . Auth::user()->idColaborador . '.pdf'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

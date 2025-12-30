@@ -4,36 +4,24 @@
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-
                 <div class="card shadow-lg border-0 rounded-4 bg-light">
-
-
                     <div
                         class="card-header text-white rounded-top-4 d-flex align-items-center justify-content-between px-4 py-3 colorprincipal">
                         <span class="h5 mb-0 text-dark">
                             <i class="fa-solid fa-file-contract me-2 text-dark"></i> PROSMAN UNID – CONTRATO DIGITAL
                         </span>
-
-
-
-
                     </div>
-
                     <div class="card-body p-4">
-
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-
-
                         <div class="bg-white rounded p-3 shadow-sm mb-4">
                             <div class="d-flex align-items-center mb-3">
                                 <img src="{{ asset('img/logo1.png') }}" height="60" class="me-4">
                                 <h2 class="fs-5">Plataforma Digital de Documentación Laboral</h2>
                             </div>
-
                             <div class="text-justify">
                                 <p class="mb-2">
                                     <i class="fa-solid fa-user-circle me-2 colorsecundario"></i>

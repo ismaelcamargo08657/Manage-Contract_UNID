@@ -1675,12 +1675,9 @@
 
 
         <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
-
-
             <div class="py-3 mb-3">
                 <img src="{{ public_path('storage/Datos_Colaborador/' . $idColaborador . '/historial/firmas_colaborador/firma_' . $idColaborador . '.png') }}"
                     alt="Firma del trabajador" style="max-width: 900px; max-height: 122px; object-fit: contain;">
-
             </div>
 
             <hr class="w-50 mx-auto">
@@ -1690,7 +1687,7 @@
             </h5>
             <span class="text-muted">TRABAJADOR</span>
         </div>
-        @if (session()->has('success') || $estatus_contratoDigital == 0)
+        {{-- @if (session()->has('success') || $estatus_contratoDigital == 0)
             <div class="alert alert-primary text-center p-4 my-4">
                 <strong>¡Proceso completado!</strong><br>
 
@@ -1700,9 +1697,9 @@
                     Has aceptado correctamente tu contrato digital.
                 @endif
             </div>
-        @endif
+        @endif --}}
 
-        @if ($estatus_contratoDigital == 1)
+        {{-- @if ($estatus_contratoDigital == 1)
             <div class="container m-4">
                 <div class="d-flex justify-content-center align-items-center mb-3 me-3 mt-4">
                     <form action="{{ route('contrato.aceptar') }}" method="POST">
@@ -1713,7 +1710,7 @@
                     </form>
                 </div>
             </div>
-        @endif
+        @endif --}}
     </div>
 
 </html>
