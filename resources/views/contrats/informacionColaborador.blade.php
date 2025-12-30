@@ -4,10 +4,7 @@
     <div class="container py-2">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-11">
-
                 <div class="card shadow-lg border-0 rounded-4">
-
-
                     <div
                         class="card-header text-dark rounded-top-4 d-flex align-items-center justify-content-between px-4 py-3 colorprincipal">
                         <h4 class="h5 mb-0 d-flex align-items-center">
@@ -15,8 +12,6 @@
                             Datos Personales - Paso 1/3
                         </h4>
                     </div>
-
-
                     <div class="card-body p-4 bg-light">
 
                         <form action="{{ route('contrato.guardar') }}" method="post" id="formDatosPersonales">
@@ -297,11 +292,10 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="fa-solid fa-times me-1"></i> No
                     </button>
-                    <button type="submit" form="formDatosPersonales" class="btn btn-primary" id="btnColaboradorInfo">
+                    <button type="submit" form="formDatosPersonales" class="btn btn-primary" >
                         <i class="fa-solid fa-check me-1"></i> Continuar
                     </button>
                 </div>
-
             </div>
         </div>
     </div>

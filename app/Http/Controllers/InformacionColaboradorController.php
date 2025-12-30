@@ -23,14 +23,11 @@ class InformacionColaboradorController extends Controller
                 col.Telefono,
                 col.Email,
                 col.Direccion,
-                
-
                 comp.CURP,
                 comp.RFC,
                 comp.Emergencia_Nombre,
                 comp.Emergencia_Telefono,
                 comp.Emergencia_Parentesco,
-
                 ce.Nombre AS Nombre_Cedis,
                 ce.Direccion AS Direccion_Cedis,
                 ce.Responsable AS Responsable_Cedis
