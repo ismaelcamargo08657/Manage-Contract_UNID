@@ -17,7 +17,7 @@ class CuestionarioMedicoDataController extends Controller
     public function index()
     {
          $datosPeraona = DB::table("colaborador")
-        ->select('colaborador.Nombre as nombreColaborador', 'Apellido_Paterno', 'Apellido_Materno', 'Edad' ,'Sexo',
+        ->select('colaborador.Nombre as nombreColaborador', 'Apellido_Paterno', 'Apellido_Materno', '   ' ,'Sexo',
                 'complementos.CURP', 'RFC', 'colaborador.Telefono', 'Email', 'colaborador.Direccion', 'Colonia', 'colaborador.Estado',
                 'colaborador.Municipio', 'Codigo_Postal', 'complementos.Salario', 'complementos.Puesto', 'complementos.Fecha_Ingreso',  'cedis.Nombre  as nombreCedis'
                 )
