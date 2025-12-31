@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Contrato;
+use Carbon\Carbon;
+
 
 class ContratoController extends Controller
 {
@@ -46,6 +48,11 @@ class ContratoController extends Controller
             ($data->Colonia ? ', ' . $data->Colonia : '')
         );
 
+$fechaIngreso = Carbon::parse($data->Fecha_Ingreso);
+$fechaFinContrato = $fechaIngreso->copy()->addDays(30);
+
+
+
 
         $contrato = DB::table('contratos')
             ->where('idColaborador', $idColaborador)
@@ -57,7 +64,8 @@ class ContratoController extends Controller
             'idColaborador' => $idColaborador,
             'estatus_contratoDigital' => $contrato->status_contratos ?? 1,
             'edad' => $data->Edad,
-            'fechaIngreso' => $data->Fecha_Ingreso,
+              'fechaIngreso' => $fechaIngreso,         
+    'fechaFinContrato' => $fechaFinContrato, 
             'Sexo' => $data->Sexo,
             'claveLector' => $contrato->clave_lector,
             'domicilio' => $domicilio,

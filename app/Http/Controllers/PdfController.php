@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class PdfController extends Controller
 {
@@ -11,53 +12,54 @@ class PdfController extends Controller
     {
         $idColaborador = auth()->user()->idColaborador;
 
-
         $data = DB::selectOne("
-        SELECT 
-            col.Nombre,
-            col.Apellido_Paterno,
-            col.Apellido_Materno,
-               col.Email,
-            col.Edad,
-             col.Sexo,
-             col.Direccion,
-               col.Colonia,
-
-            
-            comp.Puesto,
-               comp.RFC,
+            SELECT 
+                col.Nombre,
+                col.Apellido_Paterno,
+                col.Apellido_Materno,
+                col.Email,
+                col.Edad,
+                col.Sexo,
+                col.Direccion,
+                col.Colonia,
+                comp.Puesto,
+                comp.RFC,
                 comp.Emergencia_Nombre,
-            comp.Fecha_Ingreso
-        FROM nxgcommx_intranet_cya.colaborador col
-        LEFT JOIN nxgcommx_intranet_cya.complementos comp
-            ON comp.id_colaborador = col.idColaborador
-        WHERE col.idColaborador = ?
-        LIMIT 1
-    ", [$idColaborador]);
+                comp.Fecha_Ingreso
+            FROM nxgcommx_intranet_cya.colaborador col
+            LEFT JOIN nxgcommx_intranet_cya.complementos comp
+                ON comp.id_colaborador = col.idColaborador
+            WHERE col.idColaborador = ?
+            LIMIT 1
+        ", [$idColaborador]);
 
         if (!$data) {
-            return abort(404, "No se encontró información del colaborador.");
+            abort(404, "No se encontró información del colaborador.");
         }
-
 
         $contrato = DB::table('contratos')
             ->where('idColaborador', $idColaborador)
             ->first();
 
         if (!$contrato) {
-            return abort(404, "No existe registro de contrato para este colaborador.");
+            abort(404, "No existe registro de contrato para este colaborador.");
         }
-
 
         if ($contrato->pdf_status == 0) {
-            return abort(403, "El contrato ya fue generado.");
+            abort(403, "El contrato ya fue generado.");
         }
 
+       
+        $fechaIngreso = Carbon::parse($data->Fecha_Ingreso)->locale('es');
+
+      
+        $fechaFinContrato = $fechaIngreso->copy()->addDays(30);
 
         $nombreCompleto = $data->Nombre . ' ' . $data->Apellido_Paterno . ' ' . $data->Apellido_Materno;
+
         $domicilio = trim(
             ($data->Direccion ?? '') .
-                ($data->Colonia ? ', ' . $data->Colonia : '')
+            ($data->Colonia ? ', ' . $data->Colonia : '')
         );
 
         $pdf = Pdf::loadView('contrats.contrato_pdf', [
@@ -74,9 +76,10 @@ class PdfController extends Controller
             'beneficiario' => $data->Emergencia_Nombre,
             'email' => $data->Email,
 
-            'fechaIngreso' => $data->Fecha_Ingreso
+       
+            'fechaIngreso' => $fechaIngreso,
+            'fechaFinContrato' => $fechaFinContrato
         ]);
-
 
         $basePath = storage_path("app/public/Datos_Colaborador/$idColaborador/historial/");
         $pathActual = $basePath . "contrato_actual/";
@@ -88,22 +91,16 @@ class PdfController extends Controller
         $currentFileName = "contrato_{$idColaborador}.pdf";
         $currentFilePath = $pathActual . $currentFileName;
 
-
         if (file_exists($currentFilePath)) {
             $timestamp = date('Y-m-d_H-i-s');
-            $newPastFileName = "contrato_{$idColaborador}_{$timestamp}.pdf";
-            rename($currentFilePath, $pathPasados . $newPastFileName);
+            rename($currentFilePath, $pathPasados . "contrato_{$idColaborador}_{$timestamp}.pdf");
         }
-
 
         file_put_contents($currentFilePath, $pdf->output());
 
-
         DB::table('contratos')
             ->where('idColaborador', $idColaborador)
-            ->update([
-                'pdf_status' => 0
-            ]);
+            ->update(['pdf_status' => 0]);
 
         return $pdf->stream("contrato_{$idColaborador}.pdf");
     }

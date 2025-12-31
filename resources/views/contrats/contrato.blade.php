@@ -266,15 +266,17 @@
                     inherentes al servicio de limpieza.
                 </p>
 
-                <p>
-                    En tal virtud, las partes acuerdan que el primer contrato se celebra bajo la modalidad de capacitación
-                    inicial, conforme a lo dispuesto por el artículo 39-A de la Ley Federal del Trabajo, con una duración
-                    del ________ de ______________ del 2025, al ________ de ______________ del 2026, durante el cual “LA
-                    EMPRESA” proporcionará a “EL/LA TRABAJADOR/A” la capacitación teórica y práctica necesaria para la
-                    correcta ejecución de las actividades de limpieza, uso adecuado de insumos, manejo de productos
-                    químicos, aplicación de protocolos de higiene, orden y seguridad, en apego a lo dispuesto por los
-                    artículos 153-A al 153-X de la Ley Federal del Trabajo y demás normatividad aplicable.
-                </p>
+<p>
+    En tal virtud, las partes acuerdan que el primer contrato se celebra bajo la modalidad de capacitación
+    inicial, conforme a lo dispuesto por el artículo 39-A de la Ley Federal del Trabajo, con una duración
+    del {{ $fechaIngreso->format('d') }} de {{ $fechaIngreso->translatedFormat('F') }} del {{ $fechaIngreso->format('Y') }},
+    al {{ $fechaFinContrato->format('d') }} de {{ $fechaFinContrato->translatedFormat('F') }} del {{ $fechaFinContrato->format('Y') }},
+    durante el cual “LA EMPRESA” proporcionará a “EL/LA TRABAJADOR/A” la capacitación teórica y práctica necesaria para la
+    correcta ejecución de las actividades de limpieza, uso adecuado de insumos, manejo de productos
+    químicos, aplicación de protocolos de higiene, orden y seguridad, en apego a lo dispuesto por los
+    artículos 153-A al 153-X de la Ley Federal del Trabajo y demás normatividad aplicable.
+</p>
+
 
                 <p>
                     Durante el periodo de capacitación inicial, “EL/LA TRABAJADOR/A” se obliga a:
