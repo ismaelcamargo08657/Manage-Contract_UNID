@@ -133,9 +133,8 @@
                     o vicio del consentimiento alguno, y que las condiciones establecidas en el mismo han sido
                     negociadas de común acuerdo conforme a lo dispuesto por la Ley Federal del Trabajo, sin que
                     exista renuncia alguna a los derechos y obligaciones que establece dicho ordenamiento,
-                    atendiendo a lo manifestado por ambas partes, así como a lo previsto en los artículos 20,
-                    24, 25 y demás relativos de la Ley Federal del Trabajo, siendo voluntad de las partes
-                    celebrar el presente
+                    atendiendo a lo manifestado por ambas partes, así como a lo dispuesto por los artículos 20, 24, 25 y
+                    demás relativos de la Ley Federal del trabajo, que es voluntad de estas celebrar el presente
                     <strong>CONTRATO INDIVIDUAL DE TRABAJO POR PERIODO DE CAPACITACIÓN INICIAL AL TENOR DE LAS SIGUIENTES
                         :</strong>.
                 </p>
@@ -266,16 +265,19 @@
                     inherentes al servicio de limpieza.
                 </p>
 
-<p>
-    En tal virtud, las partes acuerdan que el primer contrato se celebra bajo la modalidad de capacitación
-    inicial, conforme a lo dispuesto por el artículo 39-A de la Ley Federal del Trabajo, con una duración
-    del {{ $fechaIngreso->format('d') }} de {{ $fechaIngreso->translatedFormat('F') }} del {{ $fechaIngreso->format('Y') }},
-    al {{ $fechaFinContrato->format('d') }} de {{ $fechaFinContrato->translatedFormat('F') }} del {{ $fechaFinContrato->format('Y') }},
-    durante el cual “LA EMPRESA” proporcionará a “EL/LA TRABAJADOR/A” la capacitación teórica y práctica necesaria para la
-    correcta ejecución de las actividades de limpieza, uso adecuado de insumos, manejo de productos
-    químicos, aplicación de protocolos de higiene, orden y seguridad, en apego a lo dispuesto por los
-    artículos 153-A al 153-X de la Ley Federal del Trabajo y demás normatividad aplicable.
-</p>
+                <p>
+                    En tal virtud, las partes acuerdan que el primer contrato se celebra bajo la modalidad de capacitación
+                    inicial, conforme a lo dispuesto por el artículo 39-A de la Ley Federal del Trabajo, con una duración
+                    del {{ $fechaIngreso->format('d') }} de {{ $fechaIngreso->translatedFormat('F') }} del
+                    {{ $fechaIngreso->format('Y') }},
+                    al {{ $fechaFinContrato->format('d') }} de {{ $fechaFinContrato->translatedFormat('F') }} del
+                    {{ $fechaFinContrato->format('Y') }},
+                    durante el cual “LA EMPRESA” proporcionará a “EL/LA TRABAJADOR/A” la capacitación teórica y práctica
+                    necesaria para la
+                    correcta ejecución de las actividades de limpieza, uso adecuado de insumos, manejo de productos
+                    químicos, aplicación de protocolos de higiene, orden y seguridad, en apego a lo dispuesto por los
+                    artículos 153-A al 153-X de la Ley Federal del Trabajo y demás normatividad aplicable.
+                </p>
 
 
                 <p>
@@ -1646,75 +1648,74 @@
                     la protección de los derechos de ambas partes y la seguridad jurídica en la relación laboral.
                 </p>
 
-              
-                    <p>
-                        Leído que fue el presente contrato por las partes, e impuestas de su contenido y fuerza legal, lo
-                        firman
-                        en cinco hojas útiles, en <b class="bg-info estadoCedis"></b>, MÉXICO, a día
-                        {{ now()->format('d') }} de {{ strtoupper(now()->locale('es')->translatedFormat('F')) }} de
-                        {{ now()->year }},
-                        quedando un tanto en poder de cada una de las mismas.
-                    </p>
-                </div>
+
+                <p>
+                    Leído que fue el presente contrato por las partes, e impuestas de su contenido y fuerza legal, lo firman
+                    al alcance, en Puebla, <b class="bg-info estadoCedis"></b>, pue a, a día
+                    {{ now()->format('d') }} de {{ strtoupper(now()->locale('es')->translatedFormat('F')) }} de
+                    {{ now()->year }},
+                  
+                </p>
+            </div>
 
 
-                <div class="container my-4">
-                    <div class="row justify-content-between">
+            <div class="container my-4">
+                <div class="row justify-content-between">
 
 
-                        <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
+                    <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
 
 
-                            <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
-                                <img src="{{ asset('img/anexos/firmaOF.png') }}" alt="Firma representante"
-                                    style="max-height: 100%; max-width: 100%; object-fit: contain;">
-                            </div>
-
-                            <hr class="w-50 mx-auto">
-
-                            <span class="fw-bold d-block">JANETT FLOREZ ESPINOSA</span>
-                            <span class="text-muted">Representante Legal</span>
+                        <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
+                            <img src="{{ asset('img/anexos/firmaOF.png') }}" alt="Firma representante"
+                                style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
 
+                        <hr class="w-50 mx-auto">
 
-                        <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
-
-
-                            <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
-                                <img src="{{ asset('storage/Datos_Colaborador/' . $idColaborador . '/historial/firmas_colaborador/firma_' . $idColaborador . '.png') }}"
-                                    alt="Firma trabajador" style="max-height: 100%; max-width: 150%; object-fit: contain;">
-                            </div>
-
-                            <hr class="w-50 mx-auto">
-
-                            <h5 class="fw-bold mb-1 text-uppercase text-dark">
-                                {{ $nombreCompleto }}
-                            </h5>
-                            <span class="text-muted">TRABAJADOR</span>
-                        </div>
-                        @if (session()->has('success') || $estatus_contratoDigital == 0)
-                            <div class="alert alert-primary text-center p-4 my-4">
-                                <strong>¡Proceso completado!</strong><br>
-
-                                @if (session()->has('success'))
-                                    {{ session('success') }}
-                                @else
-                                    Has aceptado correctamente tu contrato digital.
-                                @endif
-                            </div>
-                        @endif
-
-                        @if ($estatus_contratoDigital == 1)
-                            <div class="container m-4">
-                                <div class="d-flex justify-content-center align-items-center mb-3 me-3 mt-4">
-                                    <form action="{{ route('contrato.aceptar') }}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-primary">
-                                            Acepto los términos y condiciones del Contrato Digital
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        @endif
+                        <span class="fw-bold d-block">JANETT FLORES ESPINOSA</span>
+                        <span class="text-muted">Representante Legal</span>
                     </div>
-                @endsection
+
+
+                    <div class="col-md-5 text-center p-3 border rounded shadow-sm bg-light d-flex flex-column">
+
+
+                        <div class="d-flex align-items-center justify-content-center mb-2" style="height: 150px;">
+                            <img src="{{ asset('storage/Datos_Colaborador/' . $idColaborador . '/historial/firmas_colaborador/firma_' . $idColaborador . '.png') }}"
+                                alt="Firma trabajador" style="max-height: 100%; max-width: 150%; object-fit: contain;">
+                        </div>
+
+                        <hr class="w-50 mx-auto">
+
+                        <h5 class="fw-bold mb-1 text-uppercase text-dark">
+                            {{ $nombreCompleto }}
+                        </h5>
+                        <span class="text-muted">TRABAJADOR</span>
+                    </div>
+                    @if (session()->has('success') || $estatus_contratoDigital == 0)
+                        <div class="alert alert-primary text-center p-4 my-4">
+                            <strong>¡Proceso completado!</strong><br>
+
+                            @if (session()->has('success'))
+                                {{ session('success') }}
+                            @else
+                                Has aceptado correctamente tu contrato digital.
+                            @endif
+                        </div>
+                    @endif
+
+                    @if ($estatus_contratoDigital == 1)
+                        <div class="container m-4">
+                            <div class="d-flex justify-content-center align-items-center mb-3 me-3 mt-4">
+                                <form action="{{ route('contrato.aceptar') }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-primary">
+                                        Acepto los términos y condiciones del Contrato Digital
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            @endsection
