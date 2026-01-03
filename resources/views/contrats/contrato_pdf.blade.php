@@ -333,7 +333,7 @@
     <h3>QUINTA. ENTREGA DE DOCUMENTACIÓN Y CUESTIONARIO MÉDICO</h3>
 
     <p>
-        “EL/LA TRABAJADOR/A”, en su carácter de personal operativo de seguridad privada, se obliga a entregar a
+        “EL/LA TRABAJADOR/A”, en su carácter de personal operativo de Personal de limpieza, se obliga a entregar a
         “LA EMPRESA” la totalidad de la documentación requerida para su contratación, registro y alta ante las
         autoridades laborales y de seguridad pública correspondientes. Dicha documentación deberá presentarse
         previo al inicio de sus labores y comprenderá, la descrita en el Anexo II “Perfil del Puesto”.
@@ -1029,7 +1029,7 @@
         “EL/LA TRABAJADOR/A” acepta y conviene expresamente en someterse a los reconocimientos médicos que, de
         manera periódica o extraordinaria, determine “LA EMPRESA”, con fundamento en lo dispuesto por la
         fracción X del artículo 134, de la Ley Federal del Trabajo y en cumplimiento de las normas de seguridad
-        aplicables al servicio de seguridad privada.
+        aplicables al servicio de Personal de limpieza.
     </p>
 
     <p>
