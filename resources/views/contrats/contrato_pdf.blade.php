@@ -18,7 +18,9 @@
         DE SERVICIOS ESPECIALIZADOS, REPRESENTADA EN ESTE ACTO POR LA C.
         <strong>JANETT FLORES ESPINOSA</strong>, EN SU CARÁCTER DE ADMINISTRADOR ÚNICO,
         A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ <strong>“LA EMPRESA”</strong>, Y POR LA OTRA
-        EL/LA C. <span class="nombreTrabajador bg-info">{{ $nombreCompleto }}</span>,
+        EL/LA C. <span class="nombreTrabajador bg-info">
+            {{ mb_strtoupper($nombreCompleto, 'UTF-8') }}
+        </span>,
         QUIEN COMPARECE POR SU PROPIO DERECHO Y A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ
         <strong>“EL/LA TRABAJADOR/A”</strong>, AL TENOR DE LAS SIGUIENTES DECLARACIONES Y CLÁUSULAS.
     </p>
@@ -1648,10 +1650,10 @@
 
     <p>
         Leído que fue el presente contrato por las partes, e impuestas de su contenido y fuerza legal, lo firman al
-        alcance, en Puebla, <b class="bg-info estadoCedis"></b>, pue a, 
-        {{ now()->format('d') }} de {{ strtoupper(now()->locale('es')->translatedFormat('F')) }} 
+        alcance, en Puebla, <b class="bg-info estadoCedis"></b>, pue a,
+        {{ now()->format('d') }} de {{ strtoupper(now()->locale('es')->translatedFormat('F')) }}
         {{ now()->year }},
-    
+
     </p>
 </div>
 
@@ -1687,9 +1689,10 @@
 
             <hr class="w-50 mx-auto">
 
-            <h5 class="fw-bold mb-1 text-uppercase text-dark">
-                {{ $nombreCompleto }}
+            <h5 class="fw-bold mb-1 text-dark">
+                {{ mb_strtoupper($nombreCompleto, 'UTF-8') }}
             </h5>
+
             <span class="text-muted">TRABAJADOR</span>
         </div>
         @if (session()->has('success') || $estatus_contratoDigital == 0)

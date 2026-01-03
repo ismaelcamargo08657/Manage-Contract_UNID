@@ -20,7 +20,10 @@
                     DE SERVICIOS ESPECIALIZADOS, REPRESENTADA EN ESTE ACTO POR LA C.
                     <strong>JANETT FLORES ESPINOSA</strong>, EN SU CARÁCTER DE ADMINISTRADOR ÚNICO,
                     A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ <strong>“LA EMPRESA”</strong>, Y POR LA OTRA
-                    EL/LA C. <span class="nombreTrabajador bg-info">{{ $nombreCompleto }}</span>,
+                    EL/LA C. <span class="nombreTrabajador bg-info">
+                        {{ mb_strtoupper($nombreCompleto, 'UTF-8') }}
+                    </span>
+                    ,
                     QUIEN COMPARECE POR SU PROPIO DERECHO Y A QUIEN EN LO SUCESIVO SE LE DENOMINARÁ
                     <strong>“EL/LA TRABAJADOR/A”</strong>, AL TENOR DE LAS SIGUIENTES DECLARACIONES Y CLÁUSULAS.
                 </p>
@@ -336,7 +339,8 @@
                 <h3>QUINTA. ENTREGA DE DOCUMENTACIÓN Y CUESTIONARIO MÉDICO</h3>
 
                 <p>
-                    “EL/LA TRABAJADOR/A”, en su carácter de personal operativo de Personal de limpieza, se obliga a entregar a
+                    “EL/LA TRABAJADOR/A”, en su carácter de personal operativo de Personal de limpieza, se obliga a entregar
+                    a
                     “LA EMPRESA” la totalidad de la documentación requerida para su contratación, registro y alta ante las
                     autoridades laborales y de seguridad pública correspondientes. Dicha documentación deberá presentarse
                     previo al inicio de sus labores y comprenderá, la descrita en el Anexo II “Perfil del Puesto”.
@@ -1654,7 +1658,7 @@
                     al alcance, en Puebla, <b class="bg-info estadoCedis"></b>, pue a, a día
                     {{ now()->format('d') }} de {{ strtoupper(now()->locale('es')->translatedFormat('F')) }} de
                     {{ now()->year }},
-                  
+
                 </p>
             </div>
 
